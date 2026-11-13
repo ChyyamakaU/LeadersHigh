@@ -88,7 +88,7 @@ async function getTasks(studentUserId, { page = 1, limit = 20, status, search })
  */
 async function getTaskById(studentUserId, taskId) {
   const assignment = await TaskAssignment.findOne({
-    where: { studentId: studentUserId, taskId },
+    where: { id: taskId, studentId: studentUserId },
     include: [
       {
         model: Task,
@@ -116,7 +116,7 @@ async function updateTaskStatus(studentUserId, taskId, { status }) {
   }
 
   const assignment = await TaskAssignment.findOne({
-    where: { studentId: studentUserId, taskId },
+    where: { id: taskId, studentId: studentUserId },
   });
 
   if (!assignment) {

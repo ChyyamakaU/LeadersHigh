@@ -221,16 +221,18 @@ describe("Attendance Management", () => {
 
     it("should NOT allow prefect to update another prefect's attendance record", async () => {
       const { Attendance } = require("../src/models/index");
-      // Staff creates a record first
+      // Staff creates a record on a different date to avoid duplicate conflict
+      // with the prefect's earlier record for student2 on ids.today
+      const staffDate = new Date(Date.now() - 2 * 86400000).toISOString().split("T")[0];
       await makeRequest(app, "POST", "/attendance", {
         studentIds: [ids.student2],
         classId: ids.classA,
-        date: ids.today,
+        date: staffDate,
         status: "present",
       }, tokens.staff);
 
       const record = await Attendance.findOne({
-        where: { studentId: ids.student2, date: ids.today },
+        where: { studentId: ids.student2, date: staffDate },
       });
 
       // Prefect tries to update staff's record

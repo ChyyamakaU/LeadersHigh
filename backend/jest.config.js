@@ -1,6 +1,7 @@
 module.exports = {
   testEnvironment: "node",
   testTimeout: 30000,
+  maxWorkers: 1,
   setupFiles: ["./tests/setup.js"],
   setupFilesAfterEnv: ["./tests/teardown.js"],
   testMatch: ["**/tests/**/*.test.js"],
