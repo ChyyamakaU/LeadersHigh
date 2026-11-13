@@ -19,6 +19,7 @@ const studentRoutes = require("./routes/studentRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 const announcementRoutes = require("./routes/announcementRoutes");
+const auditLogRoutes = require("./routes/auditLogRoutes");
 const healthRoutes = require("./routes/healthRoutes");
 
 const app = express();
@@ -49,6 +50,11 @@ app.use("/api/student", studentRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/attendance", attendanceRoutes);
 app.use("/api/announcements", announcementRoutes);
+
+// Audit log routes (principal and staff only)
+const auditLogRouter = require("express").Router();
+auditLogRoutes.setupAuditRoutes(auditLogRouter);
+app.use("/api/audit-logs", auditLogRouter);
 
 // 404 handler for undefined routes
 app.use((_req, _res, next) => {
