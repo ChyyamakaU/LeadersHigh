@@ -82,7 +82,7 @@ const StudentProfile = sequelize.define(
       allowNull: false,
       unique: true,
       references: { model: "Users", key: "id" },
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     },
     admissionNumber: {
       type: DataTypes.STRING(50),
@@ -147,7 +147,7 @@ const StaffProfile = sequelize.define(
       allowNull: false,
       unique: true,
       references: { model: "Users", key: "id" },
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     },
     staffNumber: {
       type: DataTypes.STRING(50),
@@ -186,7 +186,7 @@ const PrefectProfile = sequelize.define(
       allowNull: false,
       unique: true,
       references: { model: "Users", key: "id" },
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     },
     prefectNumber: {
       type: DataTypes.STRING(50),
@@ -319,7 +319,7 @@ const Task = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: "Users", key: "id" },
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     },
     classId: {
       type: DataTypes.INTEGER,
@@ -424,13 +424,13 @@ const Attendance = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: "Classes", key: "id" },
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     },
     recordedBy: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: "Users", key: "id" },
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     },
     date: {
       type: DataTypes.DATEONLY,
@@ -484,7 +484,7 @@ const Announcement = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: "Users", key: "id" },
-      onDelete: "SET NULL",
+      onDelete: "CASCADE",
     },
     targetAudience: {
       type: DataTypes.ENUM(

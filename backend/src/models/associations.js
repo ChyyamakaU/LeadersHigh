@@ -1,5 +1,7 @@
 "use strict";
 
+let associationsInitialized = false;
+
 const {
   User,
   StudentProfile,
@@ -15,6 +17,10 @@ const {
 } = require("./index");
 
 function setupAssociations() {
+  if (associationsInitialized) {
+    return;
+  }
+  associationsInitialized = true;
   // User <-> profiles (one-to-one)
   User.hasOne(StudentProfile, {
     foreignKey: "userId",
