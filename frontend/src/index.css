@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-snow: #F5F7F8;
+    --color-mist: #E3E8EB;
+    --color-steel: #AAB5BC;
+    --color-slate: #56636D;
+    --color-deep: #27343D;
+    --color-success: #27845B;
+    --color-warning: #C28A35;
+    --color-danger: #C65353;
+    --color-info: #4C83A5;
+
+    /* Light theme */
+    --bg-primary: #F5F7F8;
+    --bg-sidebar: #27343D;
+    --bg-card: #FFFFFF;
+    --text-primary: #27343D;
+    --text-secondary: #56636D;
+    --border-primary: #E3E8EB;
+    --elevated: #FFFFFF;
+
+    font-family: 'Inter', sans-serif;
+    font-family-heading: 'Manrope', sans-serif;
+  }
+
+  .dark {
+    /* Dark theme */
+    --bg-primary: #17232C;
+    --bg-sidebar: #111B22;
+    --bg-card: #27343D;
+    --text-primary: #F5F7F8;
+    --text-secondary: #B9C4CB;
+    --border-primary: #3D4B55;
+    --elevated: #303E48;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-deep text-white hover:bg-slate focus:ring-deep active:bg-deep;
+  }
+
+  .btn-secondary {
+    @apply btn bg-mist text-deep hover:bg-steel focus:ring-steel;
+  }
+
+  .btn-success {
+    @apply btn bg-success text-white hover:bg-[#1e6a47] focus:ring-success;
+  }
+
+  .btn-warning {
+    @apply btn bg-warning text-white hover:bg-[#a6732d] focus:ring-warning;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger text-white hover:bg-[#ad4a4a] focus:ring-danger;
+  }
+
+  .btn-info {
+    @apply btn bg-info text-white hover:bg-[#3f6d8c] focus:ring-info;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-slate hover:bg-mist focus:ring-steel;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .input {
+    @apply block w-full px-4 py-2.5 text-sm text-deep bg-white border border-mist rounded-md focus:border-info focus:ring-2 focus:ring-info focus:ring-opacity-20 transition-all duration-200 dark:bg-deep dark:text-snow dark:border-slate;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-slate mb-1 dark:text-steel;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-mist shadow-sm dark:bg-deep dark:border-slate dark:shadow-none overflow-hidden;
+  }
+
+  .card-header {
+    @apply px-6 py-4 border-b border-mist dark:border-slate;
+  }
+
+  .card-body {
+    @apply px-6 py-4;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider;
+  }
+
+  .badge-success {
+    @apply badge bg-success text-white;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning text-white;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger text-white;
+  }
+
+  .badge-info {
+    @apply badge bg-info text-white;
+  }
+
+  .badge-slate {
+    @apply badge bg-mist text-deep;
+  }
+
+  .table {
+    @apply w-full text-left border-collapse;
+  }
+
+  .table th {
+    @apply px-6 py-3 text-xs font-medium text-slate uppercase tracking-wider border-b border-mist bg-mist dark:bg-deep dark:text-steel dark:border-slate;
+  }
+
+  .table td {
+    @apply px-6 py-4 border-b border-mist text-sm text-deep dark:text-steel dark:border-slate;
+  }
+
+  .sidebar-link {
+    @apply flex items-center px-4 py-3 text-sm font-medium text-steel rounded-lg transition-colors duration-200 hover:bg-mist hover:text-deep dark:text-steel dark:hover:bg-slate dark:hover:text-snow;
+  }
+
+  .sidebar-link.active {
+    @apply bg-info text-white dark:bg-info;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.2s ease-out forwards;
+}
